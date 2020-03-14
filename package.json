@@ -1,0 +1,28 @@
+{
+  "name": "sum-metric-service",
+  "version": "1.0.0",
+  "description": " a metric logging and reporting service that sums metrics by time window for the",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jampies/Sum-Metric-Service.git"
+  },
+  "keywords": [
+    "metrics",
+    "sum"
+  ],
+  "author": "Murray le Roux",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jampies/Sum-Metric-Service/issues"
+  },
+  "homepage": "https://github.com/jampies/Sum-Metric-Service#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}
