@@ -4,6 +4,8 @@ A metric logging and reporting service that sums metrics by time window for the 
 
 Travis CI: https://travis-ci.org/github/jampies/Sum-Metric-Service
 
+Deployed here: https://sum-metric-service.now.sh
+
 ## Dependencies
 
 * Node v8+ and NPM
@@ -23,9 +25,7 @@ Travis CI: https://travis-ci.org/github/jampies/Sum-Metric-Service
 
 ## Known issues
 
-* Facebook api sometimes throws an error on init about incorrect version specified, causing it to load forever. Can be fixed with a page refresh.
-* `react-masonry-layout` sometimes renders elements over each other, but not always. Not sure why yet.
-* It cannot be deployed without setting up HTTPS as facebook api won't allow requests from http sources (besides localhost)
+* Performance could be improved by not filtering every value, but check
 
 ## License
 MIT
