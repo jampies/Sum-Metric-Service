@@ -32,7 +32,13 @@ export default {
     if (!metrics[key]) {
       return 0;
     }
-    metrics[key] = metrics[key].filter(m => m.isWithinRange());
+
+    for (let i = 0; i < metrics[key].length; i++) {
+      if (metrics[key][i].isWithinRange()) {
+        metrics[key] = metrics[key].slice(i);
+        break;
+      }
+    }
 
     return metrics[key].reduce((total, metric) => {
       return total + metric.value;

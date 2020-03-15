@@ -55,6 +55,10 @@ describe('metrics', () => {
     for (let i = 0; i < 1000; i++) {
       metrics.addMetric('foo', 4);
     }
+    td.when(mockDateFns.getCurrentDate()).thenReturn(new Date(2018, 6, 10, 10, 59, 55, 0));
+    for (let i = 0; i < 1000; i++) {
+      metrics.addMetric('foo', 4);
+    }
     td.when(mockDateFns.getCurrentDate()).thenReturn(new Date(2018, 6, 10, 11, 59, 55, 0));
     for (let i = 0; i < 10000; i++) {
       metrics.addMetric('foo', 2);
