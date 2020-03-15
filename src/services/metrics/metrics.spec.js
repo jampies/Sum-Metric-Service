@@ -48,7 +48,7 @@ describe('metrics', () => {
 
   it('should handle invalid keys', () => {
     assert.deepStrictEqual(metrics.getSumOfMetrics('jasnsjfb'), 0);
-  })
+  });
 
   it('should handle a large amount of requests', () => {
     td.when(mockDateFns.getCurrentDate()).thenReturn(new Date(2018, 6, 10, 10, 0, 0, 0));
@@ -61,5 +61,5 @@ describe('metrics', () => {
     }
     td.when(mockDateFns.getCurrentDate()).thenReturn(new Date(2018, 6, 10, 12, 0, 0, 0));
     assert.deepStrictEqual(metrics.getSumOfMetrics('foo'), 20000);
-  })
+  });
 });

@@ -1,14 +1,14 @@
 import dateFns from '../dateFns/dateFns.js';
 
-let metrics = {};
+const metrics = {};
 
 class Metric {
-  constructor(value, date) {
+  constructor (value, date) {
     this.value = value;
     this.date = date;
   }
 
-  isWithinRange() {
+  isWithinRange () {
     return Math.abs(dateFns.differenceInSeconds(dateFns.getCurrentDate(), this.date)) <= 3600;
   }
 }
