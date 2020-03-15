@@ -1,13 +1,12 @@
-let metrics = {};
 
 export default {
-    addMetric: (key, value) => {
+  addMetric: (key, value) => {
 
-    },
-    getSumOfMetrics: (key) => {
+  },
+  getSumOfMetrics: (key) => {
 
-    },
-    clearOldMetrics: () => {
-        
-    }
-}
+  },
+  clearOldMetrics: () => {
+
+  }
+};
