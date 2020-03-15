@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import metrics from './src/services/metrics/metrics';
 
 const app = express();
-const PORT = process.allowedNodeEnvironmentFlags.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
@@ -12,19 +12,27 @@ app.get('/', (req, res) => {
 });
 
 app.post('/metric/:key', (req, res) => {
-  const key = req.params.key;
-  const value = req.body.value;
-  metrics.addMetric(key, value);
+  try {
+    const key = req.params.key;
+    const value = req.body.value;
+    metrics.addMetric(key, value);
 
-  res.status(200).json({});
+    res.status(200).json({});
+  } catch (e) {
+    res.status(500).send('An error has occurred on the server.');
+  }
 });
 
 app.get('/metric/:key/sum', (req, res) => {
-  const key = req.params.key;
+  try {
+    const key = req.params.key;
 
-  const sum = metrics.getSumOfMetrics(key);
+    const sum = metrics.getSumOfMetrics(key);
 
-  res.status(200).json({ value: sum });
+    res.status(200).json({ value: sum });
+  } catch (e) {
+    res.status(500).send('An error has occurred on the server.');
+  }
 });
 
 app.listen(PORT, () => console.log(`Metric reporting server listening on port ${PORT}!`));

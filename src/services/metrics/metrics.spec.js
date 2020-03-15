@@ -1,12 +1,17 @@
 import assert from 'assert';
 import td from 'testdouble';
+import dateFns from '../dateFns/dateFns';
 
 describe('metrics', () => {
   let mockDateFns;
   let metrics;
 
   beforeEach(() => {
-    mockDateFns = td.replace('../dateFns/dateFns.js').default;
+    mockDateFns = td.replace('../dateFns/dateFns.js', {
+      getCurrentDate: td.func('mockGetCurrentDate'),
+      differenceInSeconds: dateFns.differenceInSeconds
+    });
+    td.when(mockDateFns.getCurrentDate()).thenReturn(new Date());
     metrics = require('./metrics').default;
   });
 
@@ -40,4 +45,21 @@ describe('metrics', () => {
     td.when(mockDateFns.getCurrentDate()).thenReturn(new Date(2018, 6, 10, 12, 0, 0, 0));
     assert.deepStrictEqual(metrics.getSumOfMetrics('foo'), 12);
   });
+
+  it('should handle invalid keys', () => {
+    assert.deepStrictEqual(metrics.getSumOfMetrics('jasnsjfb'), 0);
+  })
+
+  it('should handle a large amount of requests', () => {
+    td.when(mockDateFns.getCurrentDate()).thenReturn(new Date(2018, 6, 10, 10, 0, 0, 0));
+    for (let i = 0; i < 1000; i++) {
+      metrics.addMetric('foo', 4);
+    }
+    td.when(mockDateFns.getCurrentDate()).thenReturn(new Date(2018, 6, 10, 11, 59, 55, 0));
+    for (let i = 0; i < 10000; i++) {
+      metrics.addMetric('foo', 2);
+    }
+    td.when(mockDateFns.getCurrentDate()).thenReturn(new Date(2018, 6, 10, 12, 0, 0, 0));
+    assert.deepStrictEqual(metrics.getSumOfMetrics('foo'), 20000);
+  })
 });
