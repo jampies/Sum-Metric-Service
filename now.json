@@ -8,12 +8,12 @@
       "methods": ["GET"]
     },
     {
-      "src": "/metric/:key",
+      "src": "/metric/(.*)",
       "dest": "/server.js",
       "methods": ["POST"]
     },
     {
-      "src": "/metric/:key/sum",
+      "src": "/metric/(.*)/sum",
       "dest": "/server.js",
       "methods": ["GET"]
     }
