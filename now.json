@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "builds": [{ "src": "server.js", "use": "@now/node-server" }],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/server.js",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/metric/:key",
+      "dest": "/server.js",
+      "methods": ["POST"]
+    },
+    {
+      "src": "/metric/:key/sum",
+      "dest": "/server.js",
+      "methods": ["GET"]
+    }
+  ]
+}

@@ -4,7 +4,6 @@
   "description": " a metric logging and reporting service that sums metrics by time window for the",
   "main": "server.js",
   "scripts": {
-    "prestart": "rm -rf dist",
     "start": "webpack && node ./dist/bundle.js",
     "test": "npm run ss && npm run unit-test",
     "unit-test": "mocha --require @babel/register \"src/**/*.spec.js\"",
