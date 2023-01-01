@@ -41,8 +41,8 @@
     "semistandard": "^14.2.0",
     "snazzy": "^8.0.0",
     "testdouble": "^3.13.0",
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.3.11"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   },
   "semistandard": {
     "globals": [
